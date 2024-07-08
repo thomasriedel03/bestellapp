@@ -1,0 +1,51 @@
+body {
+      margin: 0;
+}
+
+#content {
+      display: flex;
+}
+
+#img-quickselection-menu-container {
+      width: 80%;
+}
+
+#img-section {
+      background-color: black;
+      height: 400px;
+}
+
+#quickselection-section {
+      background-color: aqua;
+      height: 200px;
+}
+
+#menu-section {
+      margin: 0 15%;
+}
+
+.dish {
+      border: 1px solid gray;
+      border-radius: 8px;
+      margin: 16px 0;
+      padding: 8px;
+}
+.name-button-container {
+      display: flex;
+      justify-content: space-between;
+}
+
+.add-dish-button {
+      width: 32px;
+      height: 32px;
+      border-radius: 100%;
+      border: 0.5px solid lightgray;
+      color: orange;
+      font-size: 24px;
+      cursor: pointer;
+}
+
+#shopping-cart-container {
+      background-color: yellowgreen;
+      width: 20%;
+}
