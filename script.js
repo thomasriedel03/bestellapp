@@ -1,4 +1,8 @@
 function render() {
+      renderMenu();
+}
+
+function renderMenu() {
       document.getElementById('menu-section').innerHTML = '';
 
       for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
@@ -15,3 +19,5 @@ function render() {
 }
 
 function getSavedArrays() {}
+
+function openAddDishDialog(sectionIndex, dish, dishIndex) {}

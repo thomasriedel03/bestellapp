@@ -16,9 +16,16 @@ body {
       height: 400px;
 }
 
-#quickselection-section {
+#info-section {
       background-color: aqua;
-      height: 200px;
+      height: 150px;
+}
+
+#quickselection-section {
+      height: 50px;
+      background-color: red;
+      position: sticky;
+      top: 0;
 }
 
 #menu-section {

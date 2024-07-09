@@ -5,17 +5,17 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title>Bestell-App</title>
 
-            <script src="/scripts/library.js"></script>
+            <script src="./scripts/library.js"></script>
             <script src="./scripts/templates.js"></script>
-            <script src="scripts/assets.js"></script>
-            <script src="script.js"></script>
+            <script src="./scripts/assets.js"></script>
+            <script src="./script.js"></script>
 
-            <link rel="stylesheet" href="/styles/header.css" />
+            <link rel="stylesheet" href="./styles/header.css" />
             <link rel="stylesheet" href="./styles/footer.css" />
-            <link rel="stylesheet" href="/styles/assets.css" />
-            <link rel="stylesheet" href="/styles/fonts.css" />
-            <link rel="stylesheet" href="/styles/shoppingcart.css" />
-            <link rel="stylesheet" href="/styles/standard.css" />
+            <link rel="stylesheet" href="./styles/assets.css" />
+            <link rel="stylesheet" href="./styles/fonts.css" />
+            <link rel="stylesheet" href="./styles/shoppingcart.css" />
+            <link rel="stylesheet" href="./styles/standard.css" />
             <link rel="stylesheet" href="style.css" />
       </head>
       <body onload="render()">
@@ -23,12 +23,16 @@
             <div id="content">
                   <div id="img-quickselection-menu-container">
                         <section id="img-section"></section>
+                        <section id="info-section"></section>
                         <section id="quickselection-section"></section>
                         <section id="menu-section"></section>
                   </div>
                   <div id="shopping-cart-container">
                         <div id="basket"></div>
                   </div>
+            </div>
+            <div id="add-dish-dialog-container" class="display-none">
+                  <div id="add-dish-dialog"></div>
             </div>
             <footer></footer>
       </body>
