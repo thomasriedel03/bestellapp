@@ -1,5 +1,7 @@
 function render() {
+      getSavedArrays();
       renderMenu();
+      renderBasket();
 }
 
 function renderMenu() {
@@ -7,7 +9,6 @@ function renderMenu() {
 
       for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
             const section = menu[sectionIndex];
-            getSavedArrays(section, sectionIndex);
             document.getElementById('menu-section').innerHTML += generateMenuSectionHTML(section, sectionIndex);
             const dishArea = document.getElementById(`${sectionIndex}-dish-area`);
             dishArea.innerHTML = '';
@@ -18,6 +19,18 @@ function renderMenu() {
       }
 }
 
+function renderBasket() {}
+
 function getSavedArrays() {}
 
-function openAddDishDialog(sectionIndex, dish, dishIndex) {}
+function openAddDishDialog(sectionIndex, dishIndex) {
+      document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
+      document.getElementById(`add-dish-dialog`).innerHTML = '';
+      document.getElementById(`add-dish-dialog`).innerHTML += generateDishDialogHTML(sectionIndex, dishIndex);
+}
+
+function closeAddDishDialog() {
+      document.getElementById(`add-dish-dialog-container`).classList.add('display-none');
+}
+
+function addToBasket(sectionIndex, dishIndex) {}
