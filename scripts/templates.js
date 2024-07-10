@@ -31,3 +31,29 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
 
     `;
 }
+
+function generateBasketHTML(basketIndex) {
+      return /*html*/ `
+        <div class="basket-name-price-container">
+            <h4>${basket[basketIndex].name}</h4>
+            <p>${basket[basketIndex].price}€</p>
+        </div>
+        <div class="basket-annotation-amount-container">
+            <p class="margin-0 text-decoration-underline cursor-pointer">Anmerkung <br> hinzufügen</p>
+            <div class="amount-container">
+                <button id="${basketIndex}-amount-minus" class="amount-button">-</button>
+                <p class="margin-0">1</p>
+                <button id="${basketIndex}-amount-plus" class="amount-button">+</button>
+            </div>
+            
+        </div>
+        <div class="horizontal-separator"></div>
+    `;
+}
+
+function generateBasketEmptyMessageHTML() {
+      return /*html*/ `
+        <h2 class="text-align-center">Fülle deinen Warenkorb</h1>
+        <p class="text-align-center">Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
+    `;
+}

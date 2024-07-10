@@ -19,7 +19,15 @@ function renderMenu() {
       }
 }
 
-function renderBasket() {}
+function renderBasket() {
+      document.getElementById(`basket-item-area`).innerHTML = '';
+      for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
+            document.getElementById(`basket-item-area`).innerHTML += generateBasketHTML(basketIndex);
+      }
+      if (basket[0] == null) {
+            document.getElementById(`basket-item-area`).innerHTML += generateBasketEmptyMessageHTML();
+      }
+}
 
 function getSavedArrays() {}
 
@@ -33,4 +41,8 @@ function closeAddDishDialog() {
       document.getElementById(`add-dish-dialog-container`).classList.add('display-none');
 }
 
-function addToBasket(sectionIndex, dishIndex) {}
+function addToBasket(sectionIndex, dishIndex) {
+      basket.push(menu[sectionIndex].dishes[dishIndex]);
+      closeAddDishDialog();
+      render();
+}

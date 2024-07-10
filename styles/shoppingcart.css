@@ -1,0 +1,35 @@
+#basket {
+      width: calc(100% - 36px);
+      height: 100vh;
+      background-color: white;
+      position: sticky;
+      top: 0;
+      padding: 16px;
+      border: 2px solid lightgray;
+}
+
+.basket-name-price-container {
+      display: flex;
+      justify-content: space-between;
+}
+
+.basket-annotation-amount-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+}
+
+.amount-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+}
+
+.amount-button {
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+      border-radius: 100%;
+      border: none;
+      font-size: 24px;
+}

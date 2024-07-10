@@ -8,12 +8,18 @@ body {
 }
 
 #img-quickselection-menu-container {
-      width: calc(100% - 308px);
+      width: calc(100% - 340px);
 }
 
 #img-section {
       background-color: black;
       height: 400px;
+}
+
+#head-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
 }
 
 #info-section {
@@ -55,15 +61,6 @@ body {
 
 #shopping-cart-container {
       background-color: yellowgreen;
-      width: 300px;
+      width: 336px;
       flex-grow: 1;
-      padding: 16px;
-}
-
-#basket {
-      width: 100%;
-      height: 400px;
-      background-color: white;
-      position: sticky;
-      top: 0;
 }
