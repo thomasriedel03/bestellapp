@@ -35,7 +35,6 @@ function renderBasket() {
                   calcBasketItemSums(basketIndex);
             }
       }
-      calcSubtotal();
 }
 
 function getSavedArrays() {}
@@ -52,7 +51,7 @@ function closeAddDishDialog() {
 
 function addToBasket(sectionIndex, dishIndex) {
       let newBasketItem = menu[sectionIndex].dishes[dishIndex];
-      if (newBasketItem.amount == undefined) {
+      if (newBasketItem.amount == undefined || newBasketItem.amount == 0) {
             newBasketItem.amount = 1;
             basket.push(newBasketItem);
       } else {
@@ -69,22 +68,18 @@ function calcBasketItemSums(basketIndex) {
       let itemPriceSum = document.getElementById(`${basketIndex}-item-price-sum`);
       let itemPriceSumValue = basketItem.price * basketItem.amount;
       itemPriceSum.innerHTML = `${itemPriceSumValue.toFixed(2).replace('.', ',')}` + '€';
-}
 
-function calcSubtotal() {
-      for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
-            let basketItem = basket[basketIndex];
-            let sum1 = basketItem.price * basketItem.amount;
-            let subtotal = document.getElementById('subtotal');
-
-            subtotalValue += sum1;
-            subtotal.innerHTML = subtotalValue;
-      }
+      let subtotal = document.getElementById('subtotal');
+      subtotalValue += itemPriceSumValue;
+      subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
 }
 
 function subtractOneFromAmount(basketIndex) {
       let basketItem = basket[basketIndex];
       basketItem.amount--;
+      if (basketItem.amount == 0) {
+            basket.splice(basketIndex, 1);
+      }
       basketItemCounter--;
       render();
 }
