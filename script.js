@@ -21,13 +21,26 @@ function renderMenu() {
 
 function renderBasket() {
       document.getElementById(`basket-item-area`).innerHTML = '';
-      for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
-            document.getElementById(`basket-item-area`).innerHTML += generateBasketHTML(basketIndex);
+      document.getElementById(`basket-cost-area`).innerHTML = '';
+      for (let sectionCounter = 0; sectionCounter < menu.length; sectionCounter++) {
+            for (let dishesCounter = 0; dishesCounter < menu[sectionCounter].dishes.length; dishesCounter++) {
+                  if (
+                        menu[sectionCounter].dishes[dishesCounter].amount !== undefined &&
+                        menu[sectionCounter].dishes[dishesCounter].amount !== 0
+                  ) {
+                        document.getElementById(`basket-item-area`).innerHTML += generateBasketItemHTML(
+                              sectionCounter,
+                              dishesCounter
+                        );
+                        basketItemCounter++;
+                        calcSums(sectionCounter, dishesCounter);
+                  }
+            }
       }
-      if (basket[0] == null) {
+      if (basketItemCounter == 0) {
             document.getElementById(`basket-item-area`).innerHTML += generateBasketEmptyMessageHTML();
       } else {
-            document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTMl();
+            document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTML();
       }
 }
 
@@ -44,10 +57,23 @@ function closeAddDishDialog() {
 }
 
 function addToBasket(sectionIndex, dishIndex) {
-      basket.push(menu[sectionIndex].dishes[dishIndex]);
-      amounts.push(1);
-      basketItemIndex = amounts.length;
-
+      if (menu[sectionIndex].dishes[dishIndex].amount == undefined) {
+            menu[sectionIndex].dishes[dishIndex].amount = 1;
+      } else {
+            menu[sectionIndex].dishes[dishIndex].amount++;
+      }
       closeAddDishDialog();
+      render();
+}
+
+function calcSums(sectionCounter, dishesCounter) {
+      let basketItem = menu[sectionCounter].dishes[dishesCounter];
+      let itemPriceSum = document.getElementById(`${sectionCounter}.${dishesCounter}-item-price-sum`);
+      itemPriceSum.innerHTML = `${(basketItem.price * basketItem.amount).toFixed(2).replace('.', ',')}` + '€';
+}
+function subtractOneFromAmount(sectionCounter, dishesCounter) {
+      let basketItem = menu[sectionCounter].dishes[dishesCounter];
+      basketItem.amount--;
+      basketItemCounter--;
       render();
 }

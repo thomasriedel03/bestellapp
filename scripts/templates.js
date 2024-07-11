@@ -32,18 +32,19 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
     `;
 }
 
-function generateBasketHTML(basketIndex) {
+function generateBasketItemHTML(sectionCounter, dishesCounter) {
+      let basketItem = menu[sectionCounter].dishes[dishesCounter];
       return /*html*/ `
         <div class="flex-space-between">
-            <h4>${basket[basketIndex].name}</h4>
-            <p>${basket[basketIndex].price}€</p>
+            <h4>${basketItem.name}</h4>
+            <p id="${sectionCounter}.${dishesCounter}-item-price-sum"></p>
         </div>
         <div class="basket-annotation-amount-container">
             <p class="margin-0 text-decoration-underline cursor-pointer">Anmerkung <br> hinzufügen</p>
             <div class="amount-container">
-                <button id="${basketIndex}-amount-minus" class="amount-button">-</button>
-                <p class="margin-0">1</p>
-                <button id="${basketIndex}-amount-plus" class="amount-button">+</button>
+                <button onclick="subtractOneFromAmount(${sectionCounter}, ${dishesCounter})" class="amount-button">-</button>
+                <p class="margin-0">${basketItem.amount}</p>
+                <button class="amount-button">+</button>
             </div>
             
         </div>
@@ -58,7 +59,7 @@ function generateBasketEmptyMessageHTML() {
     `;
 }
 
-function generateBasketCostAreaHTMl() {
+function generateBasketCostAreaHTML() {
       return /*html*/ `
         <div class="flex-space-between">
             <p>Zwischensumme</p>
