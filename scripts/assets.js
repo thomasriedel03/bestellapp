@@ -1,3 +1,3 @@
 let basketItemCounter = 0;
-let itemPriceSums = [];
+let subtotalValue = 0;
 let basket = [];
