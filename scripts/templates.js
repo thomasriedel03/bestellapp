@@ -63,7 +63,7 @@ function generateBasketCostAreaHTML() {
       return /*html*/ `
         <div class="flex-space-between">
             <p>Zwischensumme</p>
-            <p id="subtotal">Preis</p>
+            <p id="subtotal"></p>
         </div>
     `;
 }

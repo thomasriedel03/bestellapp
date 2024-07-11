@@ -27,18 +27,18 @@ function renderBasket() {
       } else {
             document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTML();
       }
+
       for (let sectionCounter = 0; sectionCounter < menu.length; sectionCounter++) {
             for (let dishesCounter = 0; dishesCounter < menu[sectionCounter].dishes.length; dishesCounter++) {
-                  if (
-                        menu[sectionCounter].dishes[dishesCounter].amount !== undefined &&
-                        menu[sectionCounter].dishes[dishesCounter].amount !== 0
-                  ) {
+                  let subtotalValue = 0;
+                  if (menu[sectionCounter].dishes[dishesCounter].amount >= 1) {
                         document.getElementById(`basket-item-area`).innerHTML += generateBasketItemHTML(
                               sectionCounter,
                               dishesCounter
                         );
 
-                        calcSums(sectionCounter, dishesCounter);
+                        calcBasketItemSums(sectionCounter, dishesCounter, subtotalValue);
+                        calcSubtotal(sectionCounter, dishesCounter);
                   }
             }
       }
@@ -57,25 +57,30 @@ function closeAddDishDialog() {
 }
 
 function addToBasket(sectionIndex, dishIndex) {
-      if (menu[sectionIndex].dishes[dishIndex].amount == undefined) {
-            menu[sectionIndex].dishes[dishIndex].amount = 1;
+      let newBasketItem = menu[sectionIndex].dishes[dishIndex];
+      if (newBasketItem.amount == undefined) {
+            newBasketItem.amount = 1;
       } else {
-            menu[sectionIndex].dishes[dishIndex].amount++;
+            newBasketItem.amount++;
       }
       basketItemCounter++;
+
       closeAddDishDialog();
       render();
 }
 
-function calcSums(sectionCounter, dishesCounter) {
+function calcBasketItemSums(sectionCounter, dishesCounter, subtotalValue) {
       let basketItem = menu[sectionCounter].dishes[dishesCounter];
       let itemPriceSum = document.getElementById(`${sectionCounter}.${dishesCounter}-item-price-sum`);
-      itemPriceSum.innerHTML = `${(basketItem.price * basketItem.amount).toFixed(2).replace('.', ',')}` + '€';
+      let itemPriceSumValue = basketItem.price * basketItem.amount;
+      itemPriceSum.innerHTML = `${itemPriceSumValue.toFixed(2).replace('.', ',')}` + '€';
 
       let subtotal = document.getElementById('subtotal');
-      subtotalValue = subtotalValue + basketItem.price * basketItem.amount;
-      subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',');
+      subtotalValue = subtotalValue + itemPriceSumValue;
+      subtotal.innerHTML = subtotalValue;
 }
+
+function calcSubtotal(sectionCounter, dishesCounter) {}
 
 function subtractOneFromAmount(sectionCounter, dishesCounter) {
       let basketItem = menu[sectionCounter].dishes[dishesCounter];
