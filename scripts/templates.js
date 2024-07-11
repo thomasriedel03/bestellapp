@@ -44,7 +44,7 @@ function generateBasketItemHTML(sectionCounter, dishesCounter) {
             <div class="amount-container">
                 <button onclick="subtractOneFromAmount(${sectionCounter}, ${dishesCounter})" class="amount-button">-</button>
                 <p class="margin-0">${basketItem.amount}</p>
-                <button class="amount-button">+</button>
+                <button onclick="addOneToAmount(${sectionCounter}, ${dishesCounter})" class="amount-button">+</button>
             </div>
             
         </div>

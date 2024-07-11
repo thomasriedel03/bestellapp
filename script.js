@@ -32,7 +32,7 @@ function renderBasket() {
                               sectionCounter,
                               dishesCounter
                         );
-                        basketItemCounter++;
+
                         calcSums(sectionCounter, dishesCounter);
                   }
             }
@@ -62,6 +62,7 @@ function addToBasket(sectionIndex, dishIndex) {
       } else {
             menu[sectionIndex].dishes[dishIndex].amount++;
       }
+      basketItemCounter++;
       closeAddDishDialog();
       render();
 }
@@ -75,5 +76,12 @@ function subtractOneFromAmount(sectionCounter, dishesCounter) {
       let basketItem = menu[sectionCounter].dishes[dishesCounter];
       basketItem.amount--;
       basketItemCounter--;
+      render();
+}
+
+function addOneToAmount(sectionCounter, dishesCounter) {
+      let basketItem = menu[sectionCounter].dishes[dishesCounter];
+      basketItem.amount++;
+      basketItemCounter++;
       render();
 }
