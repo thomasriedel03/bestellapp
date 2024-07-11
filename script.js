@@ -26,6 +26,8 @@ function renderBasket() {
       }
       if (basket[0] == null) {
             document.getElementById(`basket-item-area`).innerHTML += generateBasketEmptyMessageHTML();
+      } else {
+            document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTMl();
       }
 }
 
@@ -43,6 +45,9 @@ function closeAddDishDialog() {
 
 function addToBasket(sectionIndex, dishIndex) {
       basket.push(menu[sectionIndex].dishes[dishIndex]);
+      amounts.push(1);
+      basketItemIndex = amounts.length;
+
       closeAddDishDialog();
       render();
 }

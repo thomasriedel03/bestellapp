@@ -8,11 +8,6 @@
       border: 2px solid lightgray;
 }
 
-.basket-name-price-container {
-      display: flex;
-      justify-content: space-between;
-}
-
 .basket-annotation-amount-container {
       display: flex;
       justify-content: space-between;

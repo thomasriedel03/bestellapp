@@ -34,7 +34,7 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
 
 function generateBasketHTML(basketIndex) {
       return /*html*/ `
-        <div class="basket-name-price-container">
+        <div class="flex-space-between">
             <h4>${basket[basketIndex].name}</h4>
             <p>${basket[basketIndex].price}€</p>
         </div>
@@ -55,5 +55,14 @@ function generateBasketEmptyMessageHTML() {
       return /*html*/ `
         <h2 class="text-align-center">Fülle deinen Warenkorb</h1>
         <p class="text-align-center">Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
+    `;
+}
+
+function generateBasketCostAreaHTMl() {
+      return /*html*/ `
+        <div class="flex-space-between">
+            <p>Zwischensumme</p>
+            <p>Preis</p>
+        </div>
     `;
 }
