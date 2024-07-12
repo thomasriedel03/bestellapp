@@ -78,8 +78,11 @@ function calcSums(basketIndex) {
       subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
 
       let shippingCost = document.getElementById('shipping-cost');
-      if (shipping == true) {
+      if (shipping == true && subtotalValue < 30) {
             shippingCostValue = 1.5;
+            shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
+      } else if (shipping == true && subtotalValue >= 30) {
+            shippingCostValue = 0;
             shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
       } else {
             shippingCostValue = 0;
