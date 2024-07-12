@@ -26,7 +26,7 @@
 .switch {
       position: relative;
       display: inline-block;
-      width: 60px;
+      width: 300px;
       height: 34px;
 }
 
@@ -53,9 +53,9 @@
 
 .slider:before {
       position: absolute;
-      content: '';
+      content: 'Lieferung: 30-55 min';
       height: 26px;
-      width: 26px;
+      width: 150px;
       left: 4px;
       bottom: 4px;
       background-color: white;
@@ -73,16 +73,7 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-      border-radius: 34px;
-}
-
-.slider.round:before {
-      border-radius: 50%;
+      -webkit-transform: translateX(142px);
+      -ms-transform: translateX(142px);
+      transform: translateX(142px);
 }
