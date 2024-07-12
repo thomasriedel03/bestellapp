@@ -36,10 +36,16 @@
                   <div id="shopping-cart-container">
                         <div id="basket">
                               <h2 class="text-align-center">Warenkorb</h2>
-                              <label class="switch">
-                                    <input type="checkbox" />
-                                    <span class="slider"></span>
-                              </label>
+                              <div id="shipping-cost-toggle-switch-container" class="text-align-center flex">
+                                    <div onclick="shippingYes()" id="shipping-yes-container" class="background-white">
+                                          <h4 class="margin-0">Lieferung</h4>
+                                          <p class="margin-0 margin-top-8">30-55 min</p>
+                                    </div>
+                                    <div onclick="shippingNo()" id="shipping-no-container">
+                                          <h4 class="margin-0">Abholung</h4>
+                                          <p class="margin-0 margin-top-8">15 min</p>
+                                    </div>
+                              </div>
                               <div id="basket-item-area"></div>
                               <div id="basket-cost-area"></div>
                         </div>

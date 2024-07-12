@@ -27,12 +27,16 @@ function renderBasket() {
             document.getElementById(`basket-item-area`).innerHTML = generateBasketEmptyMessageHTML();
       } else {
             document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTML();
+            if (shipping == true) {
+                  document.getElementById('shipping-cost-container').innerHTML += `<td>Lieferkosten</td>
+                    <td class="text-align-right" id="shipping-cost"></td>`;
+            }
       }
 
       for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
             if (basket[basketIndex].amount >= 1) {
                   document.getElementById(`basket-item-area`).innerHTML += generateBasketItemHTML(basketIndex);
-                  calcBasketItemSums(basketIndex);
+                  calcSums(basketIndex);
             }
       }
 }
@@ -63,7 +67,7 @@ function addToBasket(sectionIndex, dishIndex) {
       render();
 }
 
-function calcBasketItemSums(basketIndex) {
+function calcSums(basketIndex) {
       let basketItem = basket[basketIndex];
       let itemPriceSum = document.getElementById(`${basketIndex}-item-price-sum`);
       let itemPriceSumValue = basketItem.price * basketItem.amount;
@@ -72,6 +76,18 @@ function calcBasketItemSums(basketIndex) {
       let subtotal = document.getElementById('subtotal');
       subtotalValue += itemPriceSumValue;
       subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
+
+      let shippingCost = document.getElementById('shipping-cost');
+      if (shipping == true) {
+            shippingCostValue = 1.5;
+            shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
+      } else {
+            shippingCostValue = 0;
+      }
+
+      let total = document.getElementById('total');
+      let totalValue = subtotalValue + shippingCostValue;
+      total.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
 }
 
 function subtractOneFromAmount(basketIndex) {
@@ -88,5 +104,19 @@ function addOneToAmount(basketIndex) {
       let basketItem = basket[basketIndex];
       basketItem.amount++;
       basketItemCounter++;
+      render();
+}
+
+function shippingYes() {
+      document.getElementById('shipping-yes-container').classList.add('background-white');
+      document.getElementById('shipping-no-container').classList.remove('background-white');
+      shipping = true;
+      render();
+}
+
+function shippingNo() {
+      document.getElementById('shipping-yes-container').classList.remove('background-white');
+      document.getElementById('shipping-no-container').classList.add('background-white');
+      shipping = false;
       render();
 }

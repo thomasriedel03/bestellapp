@@ -61,9 +61,20 @@ function generateBasketEmptyMessageHTML() {
 
 function generateBasketCostAreaHTML() {
       return /*html*/ `
-        <div class="flex-space-between">
-            <p>Zwischensumme</p>
-            <p id="subtotal"></p>
-        </div>
-    `;
+        <table id="cost-area-table">
+            <tbody>
+                <tr>
+                    <td>Zwischensumme</td>
+                    <td class="text-align-right" id="subtotal"></td>
+                </tr>
+                <tr id="shipping-cost-container">
+
+                </tr>
+                <tr>
+                    <th class="text-align-left">Gesamtsumme</th>
+                    <th class="text-align-right" id="total"></th>
+                </tr>
+            </tbody>
+        </table>
+        `;
 }
