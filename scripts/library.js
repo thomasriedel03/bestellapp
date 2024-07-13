@@ -8,12 +8,14 @@ let menu = [
                         'price': '8.50',
                         'ingredients': 'Tomatensauce, Mozzarella, Basilikum',
                         'variations': [],
+                        'amount': 0,
                   },
                   {
                         'name': 'Caesar Salad',
                         'price': '7.50',
                         'ingredients': 'Römersalat, Croutons, Caesar-Dressing, Parmesan',
                         'variations': [],
+                        'amount': 0,
                   },
                   {
                         'name': 'Spaghetti Bolognese',
@@ -151,7 +153,24 @@ let menu = [
                         'name': 'Margherita',
                         'price': '8.50',
                         'ingredients': 'Tomatensauce, Mozzarella, Basilikum',
-                        'variations': [],
+                        'variations': [
+                              {
+                                    'variation': 'Klein, Ø26cm',
+                                    'variationPrice': '8.50',
+                              },
+                              {
+                                    'variation': 'Mittel, Ø30cm',
+                                    'variationPrice': '11.00',
+                              },
+                              {
+                                    'variation': 'Familie, 46x33cm',
+                                    'variationPrice': '24.00',
+                              },
+                              {
+                                    'variation': 'Party, 60x40cm',
+                                    'variationPrice': '30.00',
+                              },
+                        ],
                   },
                   {
                         'name': 'Salami Pizza',

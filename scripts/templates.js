@@ -7,7 +7,9 @@ function generateMenuSectionHTML(section, sectionIndex) {
     `;
 }
 
-function generateDishAreaHTML(section, sectionIndex, dish, dishArea, dishIndex) {
+function generateDishAreaHTML(sectionIndex, dish, dishIndex) {
+      let dishPrice = +menu[sectionIndex].dishes[dishIndex].price;
+      dishPrice = dishPrice.toFixed(2).replace('.', ',');
       return /*html*/ `
         <div class="dish">
             <div class="name-button-container">
@@ -15,17 +17,19 @@ function generateDishAreaHTML(section, sectionIndex, dish, dishArea, dishIndex) 
                 <button onclick="openAddDishDialog(${sectionIndex},${dishIndex})" class="add-dish-button" id="${sectionIndex}.${dishIndex}-add-dish-button">+</button>
             </div>
             <h5>${dish.ingredients}</h5>
-            <h4>${dish.price}€</h4>
+            <h4>${dishPrice}€</h4>
         </div>
     `;
 }
 
 function generateDishDialogHTML(sectionIndex, dishIndex) {
+      let dishPrice = +menu[sectionIndex].dishes[dishIndex].price;
+      dishPrice = dishPrice.toFixed(2).replace('.', ',');
       return /*html*/ `
         <button class="close-dialog-button" onclick="closeAddDishDialog()">X</button>
         <h1>${menu[sectionIndex].dishes[dishIndex].name}</h1>
         <h3>${menu[sectionIndex].dishes[dishIndex].ingredients}</h3>
-        <h2>${menu[sectionIndex].dishes[dishIndex].price}€</h2>
+        <h2>${dishPrice}€</h2>
         <button class="add-to-basket-button" onclick="addToBasket(${sectionIndex}, ${dishIndex})">Zum Warenkorb hinzufügen</button>
         
 
@@ -68,7 +72,6 @@ function generateBasketCostAreaHTML() {
                     <td class="text-align-right" id="subtotal"></td>
                 </tr>
                 <tr id="shipping-cost-container">
-
                 </tr>
                 <tr>
                     <th class="text-align-left">Gesamtsumme</th>

@@ -14,7 +14,7 @@ function renderMenu() {
             dishArea.innerHTML = '';
             for (let dishIndex = 0; dishIndex < section.dishes.length; dishIndex++) {
                   const dish = section.dishes[dishIndex];
-                  dishArea.innerHTML += generateDishAreaHTML(section, sectionIndex, dish, dishArea, dishIndex);
+                  dishArea.innerHTML += generateDishAreaHTML(sectionIndex, dish, dishIndex);
             }
       }
 }
@@ -23,7 +23,7 @@ function renderBasket() {
       subtotalValue = 0;
       document.getElementById(`basket-item-area`).innerHTML = '';
       document.getElementById(`basket-cost-area`).innerHTML = '';
-      if (basketItemCounter == 0) {
+      if (basket.length == 0) {
             document.getElementById(`basket-item-area`).innerHTML = generateBasketEmptyMessageHTML();
       } else {
             document.getElementById(`basket-cost-area`).innerHTML = generateBasketCostAreaHTML();
@@ -41,12 +41,25 @@ function renderBasket() {
       }
 }
 
-function getSavedArrays() {}
+function getSavedArrays() {
+      if (getArray('menu') !== null) {
+            menu = getArray('menu');
+      }
+      if (getArray('basket') !== null) {
+            basket = getArray('basket');
+      }
+
+      reestablishReferences();
+}
 
 function openAddDishDialog(sectionIndex, dishIndex) {
-      document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
-      document.getElementById(`add-dish-dialog`).innerHTML = '';
-      document.getElementById(`add-dish-dialog`).innerHTML += generateDishDialogHTML(sectionIndex, dishIndex);
+      if (menu[sectionIndex].dishes[dishIndex].variations.length !== 0) {
+            document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
+            document.getElementById(`add-dish-dialog`).innerHTML = '';
+            document.getElementById(`add-dish-dialog`).innerHTML += generateDishDialogHTML(sectionIndex, dishIndex);
+      } else {
+            addToBasket(sectionIndex, dishIndex);
+      }
 }
 
 function closeAddDishDialog() {
@@ -61,13 +74,19 @@ function addToBasket(sectionIndex, dishIndex) {
       } else {
             newBasketItem.amount++;
       }
-      basketItemCounter++;
 
       closeAddDishDialog();
+      setMenuAndBasketArrays();
       render();
 }
 
 function calcSums(basketIndex) {
+      calcSubtotal(basketIndex);
+      calcShippingCost();
+      calcTotal();
+}
+
+function calcSubtotal(basketIndex) {
       let basketItem = basket[basketIndex];
       let itemPriceSum = document.getElementById(`${basketIndex}-item-price-sum`);
       let itemPriceSumValue = basketItem.price * basketItem.amount;
@@ -76,10 +95,11 @@ function calcSums(basketIndex) {
       let subtotal = document.getElementById('subtotal');
       subtotalValue += itemPriceSumValue;
       subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
-
+}
+function calcShippingCost() {
       let shippingCost = document.getElementById('shipping-cost');
       if (shipping == true && subtotalValue < 30) {
-            shippingCostValue = 1.5;
+            shippingCostValue = 2.5;
             shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
       } else if (shipping == true && subtotalValue >= 30) {
             shippingCostValue = 0;
@@ -87,7 +107,8 @@ function calcSums(basketIndex) {
       } else {
             shippingCostValue = 0;
       }
-
+}
+function calcTotal() {
       let total = document.getElementById('total');
       let totalValue = subtotalValue + shippingCostValue;
       total.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
@@ -99,14 +120,14 @@ function subtractOneFromAmount(basketIndex) {
       if (basketItem.amount == 0) {
             basket.splice(basketIndex, 1);
       }
-      basketItemCounter--;
+      setMenuAndBasketArrays();
       render();
 }
 
 function addOneToAmount(basketIndex) {
       let basketItem = basket[basketIndex];
       basketItem.amount++;
-      basketItemCounter++;
+      setMenuAndBasketArrays();
       render();
 }
 
@@ -114,6 +135,7 @@ function shippingYes() {
       document.getElementById('shipping-yes-container').classList.add('background-white');
       document.getElementById('shipping-no-container').classList.remove('background-white');
       shipping = true;
+      setMenuAndBasketArrays();
       render();
 }
 
@@ -121,5 +143,6 @@ function shippingNo() {
       document.getElementById('shipping-yes-container').classList.remove('background-white');
       document.getElementById('shipping-no-container').classList.add('background-white');
       shipping = false;
+      setMenuAndBasketArrays();
       render();
 }
