@@ -29,12 +29,12 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
         <button class="close-dialog-button" onclick="closeAddDishDialog()">X</button>
         <h1>${menu[sectionIndex].dishes[dishIndex].name}</h1>
         <h3>${menu[sectionIndex].dishes[dishIndex].ingredients}</h3>
-        <h2>${dishPrice}€</h2>
+        <h2 id="${sectionIndex}.${dishIndex}-dish-price">${dishPrice}€</h2>
         <div class="variation-selector-container">
             <h4 class="margin-0">${menu[sectionIndex].dishes[dishIndex].name}:</h4>
-            <select id="${sectionIndex}.${dishIndex}-variation-selector" class="variation-selector"></select>
+            <select oninput="renderSelectedPrice(${sectionIndex}, ${dishIndex})" id="${sectionIndex}.${dishIndex}-variation-selector" class="variation-selector"></select>
         </div>
-        <button class="add-to-basket-button" onclick="addToBasket(${sectionIndex}, ${dishIndex})">Zum Warenkorb hinzufügen</button>
+        <button id="${sectionIndex}.${dishIndex}-add-to-basket-button" class="add-to-basket-button" onclick="addToBasket(${sectionIndex}, ${dishIndex})">Zum Warenkorb hinzufügen</button>
         
 
     `;

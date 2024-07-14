@@ -58,6 +58,7 @@ function openAddDishDialog(sectionIndex, dishIndex) {
             document.getElementById(`add-dish-dialog`).innerHTML = '';
             document.getElementById(`add-dish-dialog`).innerHTML += generateDishDialogHTML(sectionIndex, dishIndex);
             renderVariationSelector(sectionIndex, dishIndex);
+            renderSelectedPrice(sectionIndex, dishIndex);
       } else {
             addToBasket(sectionIndex, dishIndex);
       }
@@ -67,11 +68,21 @@ function renderVariationSelector(sectionIndex, dishIndex) {
       let variationSelector = document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`);
       let variations = menu[sectionIndex].dishes[dishIndex].variations;
       for (let variationIndex = 0; variationIndex < variations.length; variationIndex++) {
+            let variationPrice = +variations[variationIndex].variationPrice;
+            let variationPriceAsString = variationPrice.toFixed(2).replace('.', ',');
             variationSelector.innerHTML += /*html*/ `
-                  <option value="${variations[variationIndex].variationPrice}">${variations[variationIndex].variation}: ${variations[variationIndex].variationPrice}€</option>
+                  <option value="${variations[variationIndex].variationPrice}">${variations[variationIndex].variation}: ${variationPriceAsString}€</option>
             `;
       }
-      console.log('variation-selector rendered');
+}
+function renderSelectedPrice(sectionIndex, dishIndex) {
+      let dishPrice = document.getElementById(`${sectionIndex}.${dishIndex}-dish-price`);
+      let addToBasketButton = document.getElementById(`${sectionIndex}.${dishIndex}-add-to-basket-button`);
+      let selectedPrice = +document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
+      let selectedPriceAsString = selectedPrice.toFixed(2).replace('.', ',');
+      dishPrice.innerHTML = selectedPriceAsString + '€';
+      addToBasketButton.innerHTML = selectedPriceAsString + '€';
+      menu[sectionIndex].dishes[dishIndex].price = selectedPrice;
 }
 
 function closeAddDishDialog() {
@@ -80,6 +91,10 @@ function closeAddDishDialog() {
 
 function addToBasket(sectionIndex, dishIndex) {
       let newBasketItem = menu[sectionIndex].dishes[dishIndex];
+      let selectedPrice = +document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
+      if (selectedPrice !== newBasketItem.price) {
+      }
+
       if (newBasketItem.amount == undefined || newBasketItem.amount == 0) {
             newBasketItem.amount = 1;
             basket.push(newBasketItem);
