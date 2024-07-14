@@ -16,6 +16,7 @@
       height: 32px;
       border: none;
       cursor: pointer;
+      margin-top: 16px;
 }
 
 .add-to-basket-button:hover {

@@ -57,9 +57,21 @@ function openAddDishDialog(sectionIndex, dishIndex) {
             document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
             document.getElementById(`add-dish-dialog`).innerHTML = '';
             document.getElementById(`add-dish-dialog`).innerHTML += generateDishDialogHTML(sectionIndex, dishIndex);
+            renderVariationSelector(sectionIndex, dishIndex);
       } else {
             addToBasket(sectionIndex, dishIndex);
       }
+}
+
+function renderVariationSelector(sectionIndex, dishIndex) {
+      let variationSelector = document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`);
+      let variations = menu[sectionIndex].dishes[dishIndex].variations;
+      for (let variationIndex = 0; variationIndex < variations.length; variationIndex++) {
+            variationSelector.innerHTML += /*html*/ `
+                  <option value="${variations[variationIndex].variationPrice}">${variations[variationIndex].variation}: ${variations[variationIndex].variationPrice}€</option>
+            `;
+      }
+      console.log('variation-selector rendered');
 }
 
 function closeAddDishDialog() {

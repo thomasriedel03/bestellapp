@@ -59,6 +59,22 @@ body {
       cursor: pointer;
 }
 
+.variation-selector-container {
+      background-color: lightgray;
+      height: 128px;
+      border-radius: 16px;
+      padding: 8px;
+}
+
+.variation-selector {
+      height: 64px;
+      width: 100%;
+      margin-top: 16px;
+      border-radius: 16px;
+      font-size: 16px;
+      padding: 8px;
+}
+
 #shopping-cart-container {
       background-color: yellowgreen;
       width: 336px;
