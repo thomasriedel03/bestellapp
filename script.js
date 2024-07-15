@@ -82,7 +82,6 @@ function renderSelectedPrice(sectionIndex, dishIndex) {
       let selectedPriceAsString = selectedPrice.toFixed(2).replace('.', ',');
       dishPrice.innerHTML = selectedPriceAsString + '€';
       addToBasketButton.innerHTML = selectedPriceAsString + '€';
-      menu[sectionIndex].dishes[dishIndex].price = selectedPrice;
 }
 
 function closeAddDishDialog() {

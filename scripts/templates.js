@@ -42,6 +42,7 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
 
 function generateBasketItemHTML(basketIndex) {
       let basketItem = basket[basketIndex];
+
       return /*html*/ `
         <div class="flex-space-between">
             <h4>${basketItem.name}</h4>
