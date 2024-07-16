@@ -1,7 +1,18 @@
 function render() {
       getSavedArrays();
+      renderQuickselectionSection();
       renderMenu();
       renderBasket();
+}
+
+function renderQuickselectionSection() {
+      let quickselctionSection = document.getElementById('quickselection-section');
+      for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
+            const section = menu[sectionIndex];
+            quickselctionSection.innerHTML += /*html*/ `
+            <a href="#${sectionIndex}-menu-section">${section.section}</a>
+        `;
+      }
 }
 
 function renderMenu() {
@@ -52,7 +63,7 @@ function getSavedArrays() {
       reestablishReferences();
 }
 
-function openAddDishDialog(sectionIndex, dishIndex) {
+function addToBasket(sectionIndex, dishIndex) {
       if (menu[sectionIndex].dishes[dishIndex].variations.length !== 0) {
             document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
             document.getElementById(`add-dish-dialog`).innerHTML = '';
@@ -60,7 +71,7 @@ function openAddDishDialog(sectionIndex, dishIndex) {
             renderVariationSelector(sectionIndex, dishIndex);
             renderSelectedPrice(sectionIndex, dishIndex);
       } else {
-            addToBasket(sectionIndex, dishIndex);
+            addToBasketFromMenu(sectionIndex, dishIndex);
       }
 }
 
@@ -68,17 +79,18 @@ function renderVariationSelector(sectionIndex, dishIndex) {
       let variationSelector = document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`);
       let variations = menu[sectionIndex].dishes[dishIndex].variations;
       for (let variationIndex = 0; variationIndex < variations.length; variationIndex++) {
-            let variationPrice = +variations[variationIndex].variationPrice;
-            let variationPriceAsString = variationPrice.toFixed(2).replace('.', ',');
+            let price = +variations[variationIndex].price;
+            let priceAsString = price.toFixed(2).replace('.', ',');
             variationSelector.innerHTML += /*html*/ `
-                  <option value="${variations[variationIndex].variationPrice}">${variations[variationIndex].variation}: ${variationPriceAsString}€</option>
+                  <option value="${variations[variationIndex].position}">${variations[variationIndex].variation}: ${priceAsString}€</option>
             `;
       }
 }
 function renderSelectedPrice(sectionIndex, dishIndex) {
       let dishPrice = document.getElementById(`${sectionIndex}.${dishIndex}-dish-price`);
       let addToBasketButton = document.getElementById(`${sectionIndex}.${dishIndex}-add-to-basket-button`);
-      let selectedPrice = +document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
+      let position = document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
+      let selectedPrice = +menu[sectionIndex].dishes[dishIndex].variations[position].price;
       let selectedPriceAsString = selectedPrice.toFixed(2).replace('.', ',');
       dishPrice.innerHTML = selectedPriceAsString + '€';
       addToBasketButton.innerHTML = selectedPriceAsString + '€';
@@ -88,11 +100,23 @@ function closeAddDishDialog() {
       document.getElementById(`add-dish-dialog-container`).classList.add('display-none');
 }
 
-function addToBasket(sectionIndex, dishIndex) {
+function addToBasketFromMenu(sectionIndex, dishIndex) {
       let newBasketItem = menu[sectionIndex].dishes[dishIndex];
-      let selectedPrice = +document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
-      if (selectedPrice !== newBasketItem.price) {
+
+      if (newBasketItem.amount == undefined || newBasketItem.amount == 0) {
+            newBasketItem.amount = 1;
+            basket.push(newBasketItem);
+      } else {
+            newBasketItem.amount++;
       }
+
+      setMenuAndBasketArrays();
+      render();
+}
+
+function addToBasketFromDishDialog(sectionIndex, dishIndex) {
+      let selectedPosition = +document.getElementById(`${sectionIndex}.${dishIndex}-variation-selector`).value;
+      let newBasketItem = menu[sectionIndex].dishes[dishIndex].variations[selectedPosition];
 
       if (newBasketItem.amount == undefined || newBasketItem.amount == 0) {
             newBasketItem.amount = 1;

@@ -1,3 +1,7 @@
+html {
+      scroll-behavior: smooth;
+}
+
 body {
       margin: 0;
 }
@@ -25,17 +29,12 @@ body {
 #info-section {
       background-color: aqua;
       height: 150px;
-}
-
-#quickselection-section {
-      height: 50px;
-      background-color: red;
-      position: sticky;
-      top: 0;
+      margin: 0;
 }
 
 #menu-section {
       margin: 0 15%;
+      padding: 16px;
 }
 
 .dish {
@@ -79,4 +78,8 @@ body {
       background-color: yellowgreen;
       width: 336px;
       flex-grow: 1;
+}
+
+.section-header {
+      height: 110px;
 }

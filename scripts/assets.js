@@ -12,22 +12,22 @@ function getArray(key) {
 }
 
 function setMenuAndBasketArrays() {
-      setArray('menu', menu);
-      setArray('basket', basket);
+      //setArray('menu', menu);
+      //setArray('basket', basket);
 }
 
 function reestablishReferences() {
       // Reestablish references between basket items and menu items
-      for (let i = 0; i < basket.length; i++) {
-            let basketItem = basket[i];
-            for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
-                  const section = menu[sectionIndex];
-                  for (let dishIndex = 0; dishIndex < section.dishes.length; dishIndex++) {
-                        let menuDish = section.dishes[dishIndex];
-                        if (menuDish.name === basketItem.name) {
-                              basket[i] = menuDish;
-                        }
-                  }
-            }
-      }
+      //      for (let i = 0; i < basket.length; i++) {
+      //           let basketItem = basket[i];
+      //         for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
+      //             const section = menu[sectionIndex];
+      //           for (let dishIndex = 0; dishIndex < section.dishes.length; dishIndex++) {
+      //               let menuDish = section.dishes[dishIndex];
+      //             if (menuDish.name === basketItem.name) {
+      //                  basket[i] = menuDish;
+      //           }
+      //    }
+      //      }
+      // }
 }
