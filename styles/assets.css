@@ -1,3 +1,30 @@
+body {
+      --sb-track-color: #232e33;
+      --sb-thumb-color: #3535b2;
+      --sb-size: 16px;
+}
+
+body::-webkit-scrollbar {
+      width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 3px;
+      border: 1px solid #232e33;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+      body {
+            scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+      }
+}
+
 .close-dialog-button {
       border-radius: 100%;
       border: none;
@@ -21,4 +48,28 @@
 
 .add-to-basket-button:hover {
       background-color: rgb(225, 148, 5);
+}
+
+#open-responsive-basket-button {
+      width: 100%;
+      color: white;
+      background-color: #3535b2;
+      font-size: 32px;
+      cursor: pointer;
+      border-radius: 8px;
+      position: sticky;
+      bottom: 0;
+      justify-content: center;
+}
+
+#close-responsive-basket-button {
+      position: absolute;
+      top: 16px;
+      right: 64px;
+      height: 32px;
+      width: 32px;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 100%;
+      cursor: pointer;
 }

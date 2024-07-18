@@ -47,7 +47,7 @@ function generateBasketItemHTML(basketIndex) {
 
       return /*html*/ `
         <div class="flex-space-between">
-            <h4>${basketItem.name}</h4>
+            <h4 id="${basketIndex}-basket-item-name">${basketItem.name}</h4>
             <p id="${basketIndex}-item-price-sum"></p>
         </div>
         <div class="basket-annotation-amount-container">
@@ -82,7 +82,7 @@ function generateBasketCostAreaHTML() {
                 </tr>
                 <tr>
                     <th class="text-align-left">Gesamtsumme</th>
-                    <th class="text-align-right" id="total"></th>
+                    <th class="text-align-right" id="responsive-total"></th>
                 </tr>
             </tbody>
         </table>

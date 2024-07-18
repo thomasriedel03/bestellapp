@@ -8,6 +8,7 @@
             <script src="./scripts/library.js"></script>
             <script src="./scripts/templates.js"></script>
             <script src="./scripts/assets.js"></script>
+            <script src="./scripts/responsiveTemplates.js"></script>
             <script src="./script.js"></script>
 
             <link rel="stylesheet" href="./styles/header.css" />
@@ -18,6 +19,7 @@
             <link rel="stylesheet" href="./styles/standard.css" />
             <link rel="stylesheet" href="./styles/dialog.css" />
             <link rel="stylesheet" href="./styles/quickselectionSection.css" />
+            <link rel="stylesheet" href="./styles/responsive.css" />
             <link rel="stylesheet" href="style.css" />
       </head>
       <body onload="render()">
@@ -55,7 +57,24 @@
                         </div>
                   </div>
             </div>
-
+            <div id="responsive-basket" class="display-none">
+                  <button id="close-responsive-basket-button" onclick="closeResponsiveBasket()">X</button>
+                  <h2 class="text-align-center">Warenkorb</h2>
+                  <h5 class="text-align-center margin-0">Lieferung ab Mindestbestellwert 30€ kostenlos!</h5>
+                  <div id="responsive-shipping-cost-toggle-switch-container" class="text-align-center flex margin-top-8">
+                        <div onclick="shippingYes()" id="responsive-shipping-yes-container" class="background-white">
+                              <h4 class="margin-0">Lieferung</h4>
+                              <p class="margin-0 margin-top-8">30-55 min</p>
+                        </div>
+                        <div onclick="shippingNo()" id="responsive-shipping-no-container">
+                              <h4 class="margin-0">Abholung</h4>
+                              <p class="margin-0 margin-top-8">15 min</p>
+                        </div>
+                  </div>
+                  <div id="responsive-basket-item-area"></div>
+                  <div id="responsive-basket-cost-area"></div>
+            </div>
+            <button onclick="openResponsiveBasket()" id="open-responsive-basket-button" class="display-none">WARENKORB</button>
             <footer></footer>
       </body>
 </html>

@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+      #shopping-cart-container {
+            display: none;
+      }
+
+      #img-quickselection-menu-container {
+            width: 100% !important;
+      }
+
+      #open-responsive-basket-button {
+            display: flex;
+      }
+}

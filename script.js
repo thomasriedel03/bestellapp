@@ -3,10 +3,12 @@ function render() {
       renderQuickselectionSection();
       renderMenu();
       renderBasket();
+      renderResponsiveBasket();
 }
 
 function renderQuickselectionSection() {
       let quickselctionSection = document.getElementById('quickselection-section');
+      quickselctionSection.innerHTML = '';
       for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
             const section = menu[sectionIndex];
             quickselctionSection.innerHTML += /*html*/ `
@@ -47,9 +49,48 @@ function renderBasket() {
       for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
             if (basket[basketIndex].amount >= 1) {
                   document.getElementById(`basket-item-area`).innerHTML += generateBasketItemHTML(basketIndex);
-                  calcSums(basketIndex);
+            }
+            if ('ingredients' in basket[basketIndex]) {
+            } else {
+                  let basketItemName = document.getElementById(`${basketIndex}-basket-item-name`);
+                  basketItemName.innerHTML += ' (' + basket[basketIndex].variation + ')';
             }
       }
+}
+
+function renderResponsiveBasket() {
+      subtotalValue = 0;
+      document.getElementById(`responsive-basket-item-area`).innerHTML = '';
+      document.getElementById(`responsive-basket-cost-area`).innerHTML = '';
+      if (basket.length == 0) {
+            document.getElementById(`responsive-basket-item-area`).innerHTML = generateBasketEmptyMessageHTML();
+      } else {
+            document.getElementById(`responsive-basket-cost-area`).innerHTML = generateResponsiveBasketCostAreaHTML();
+            if (shipping == true) {
+                  document.getElementById('responsive-shipping-cost-container').innerHTML += `<td>Lieferkosten</td>
+                    <td class="text-align-right" id="responsive-shipping-cost"></td>`;
+            }
+      }
+
+      for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
+            if (basket[basketIndex].amount >= 1) {
+                  document.getElementById(`responsive-basket-item-area`).innerHTML += generateBasketItemHTML(basketIndex);
+                  calcSums(basketIndex);
+            }
+            if ('ingredients' in basket[basketIndex]) {
+            } else {
+                  let basketItemName = document.getElementById(`${basketIndex}-basket-item-name`);
+                  basketItemName.innerHTML += ' (' + basket[basketIndex].variation + ')';
+            }
+      }
+}
+
+function openResponsiveBasket() {
+      document.getElementById('responsive-basket').classList.remove('display-none');
+}
+
+function closeResponsiveBasket() {
+      document.getElementById('responsive-basket').classList.add('display-none');
 }
 
 function getSavedArrays() {
@@ -143,25 +184,34 @@ function calcSubtotal(basketIndex) {
       itemPriceSum.innerHTML = `${itemPriceSumValue.toFixed(2).replace('.', ',')}` + '€';
 
       let subtotal = document.getElementById('subtotal');
+      let responsiveSubtotal = document.getElementById('responsive-subtotal');
       subtotalValue += itemPriceSumValue;
       subtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
+      responsiveSubtotal.innerHTML = subtotalValue.toFixed(2).replace('.', ',') + '€';
 }
 function calcShippingCost() {
       let shippingCost = document.getElementById('shipping-cost');
+      let responsiveShippingCost = document.getElementById('responsive-shipping-cost');
       if (shipping == true && subtotalValue < 30) {
             shippingCostValue = 2.5;
             shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
+            responsiveShippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
       } else if (shipping == true && subtotalValue >= 30) {
             shippingCostValue = 0;
             shippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
+            responsiveShippingCost.innerHTML = shippingCostValue.toFixed(2).replace('.', ',') + '€';
       } else {
             shippingCostValue = 0;
       }
 }
 function calcTotal() {
       let total = document.getElementById('total');
+      let responsiveTotal = document.getElementById('responsive-total');
+
       let totalValue = subtotalValue + shippingCostValue;
+
       total.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
+      responsiveTotal.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
 }
 
 function subtractOneFromAmount(basketIndex) {
