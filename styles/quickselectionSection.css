@@ -1,8 +1,9 @@
 #quickselection-section {
+      margin: 0 15%;
+      padding: 0 16px;
       display: flex;
       overflow-x: auto;
       height: 80px;
-      background-color: orange;
       position: sticky;
       top: 0;
       align-items: center;

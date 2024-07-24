@@ -14,7 +14,7 @@
             <link rel="stylesheet" href="./styles/header.css" />
             <link rel="stylesheet" href="./styles/footer.css" />
             <link rel="stylesheet" href="./styles/assets.css" />
-            <link rel="stylesheet" href="./styles/fonts.css" />
+            <link rel="stylesheet" href="./fonts.css" />
             <link rel="stylesheet" href="./styles/shoppingcart.css" />
             <link rel="stylesheet" href="./styles/standard.css" />
             <link rel="stylesheet" href="./styles/dialog.css" />
@@ -36,12 +36,25 @@
                         <section id="img-section">
                               <img id="head-img" src="./assets/img/pizza.jpg" />
                         </section>
-                        <section id="info-section">
-                              <h1>La Cucina di Thomas</h1>
-                              <img src="./assets/img/star.png" id="star-img" />
-                              <img src="./Material/Favicon/android-chrome-512x512.png" id="logo-img" />
-                        </section>
-                        <section id="quickselection-section"></section>
+                        <div id="info-quickselection-container">
+                              <section id="info-section">
+                                    <div>
+                                          <h1 id="cucina">La Cucina di Thomas</h1>
+                                          <div class="flex align-items-center gap-16">
+                                                <img src="./assets/img/star.png" id="star-img" />
+                                                <p class="text-decoration-underline">
+                                                      <span class="font-weight-600">4.2</span> (200+)
+                                                </p>
+                                          </div>
+                                          <div class="flex align-items-center gap-16">
+                                                <img src="./assets/img/bicycle.png" id="bicycle-img" />
+                                                <p class="margin-0">2,50 €</p>
+                                          </div>
+                                    </div>
+                                    <img src="./Material/Favicon/android-chrome-512x512.png" id="logo-img" />
+                              </section>
+                              <section id="quickselection-section"></section>
+                        </div>
                         <section id="menu-section"></section>
                   </div>
                   <div id="shopping-cart-container">
@@ -83,6 +96,8 @@
             <button onclick="openResponsiveBasket()" id="open-responsive-basket-button" class="display-none">
                   [<span id="responsive-basket-amount"></span>] WARENKORB &nbsp;<span id="responsive-basket-button-total"></span>
             </button>
-            <footer></footer>
+            <footer>
+                  <a href="#header-img"> <img id="footer-logo" src="./Material/Logo/Logo.png" /></a>
+            </footer>
       </body>
 </html>

@@ -339,7 +339,7 @@ let menu = [
       },
       {
             'section': 'Vegetarische Pizzen',
-            'description': 'Pizzen ohne Fleisch, mit frischem Gemüse und leckeren Käsesorten.',
+            'description': 'Pizzen ohne Fleisch, mit frischem Gemüse.',
             'dishes': [
                   {
                         'name': 'Veggie Delight Pizza',

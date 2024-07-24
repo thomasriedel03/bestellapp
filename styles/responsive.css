@@ -11,3 +11,18 @@
             display: flex;
       }
 }
+
+@media (max-width: 450px) {
+      #open-responsive-basket-button {
+            font-size: 20px;
+      }
+
+      #cucina {
+            font-size: 20px;
+            white-space: nowrap;
+      }
+
+      .section-description {
+            font-size: 12px;
+      }
+}

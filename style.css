@@ -4,6 +4,7 @@ html {
 
 body {
       margin: 0;
+      font-family: 'Poppins', sans-serif;
 }
 
 #content {
@@ -26,6 +27,11 @@ body {
       object-fit: cover;
 }
 
+#info-quickselection-container {
+      -webkit-box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.51);
+      box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.51);
+}
+
 #info-section {
       height: 150px;
       margin: 0 15%;
@@ -36,13 +42,18 @@ body {
       height: 64px;
       width: 64px;
       position: relative;
-      top: -128px;
+      top: -202px;
 }
 
 #star-img {
       filter: invert(50%) sepia(45%) saturate(5838%) hue-rotate(5deg) brightness(102%) contrast(96%);
-      height: 32px;
-      width: 32px;
+      height: 24px;
+      width: 24px;
+}
+
+#bicycle-img {
+      height: 20px;
+      width: 20px;
 }
 
 #menu-section {

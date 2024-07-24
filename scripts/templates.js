@@ -2,7 +2,7 @@ function generateMenuSectionHTML(section, sectionIndex) {
       return /*html*/ `
         <div class="section-header">
             <h2  id="${sectionIndex}-menu-section"  class="section-header-headline">${section.section}</h2>
-            <p class="margin-top-8">${section.description}</p>
+            <p class="margin-top-8 section-description">${section.description}</p>
         </div>
         <div id="${sectionIndex}-dish-area">
         </div>
