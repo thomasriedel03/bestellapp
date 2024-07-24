@@ -10,7 +10,7 @@ function generateResponsiveBasketCostAreaHTML() {
                 </tr>
                 <tr>
                     <th class="text-align-left">Gesamtsumme</th>
-                    <th class="text-align-right" id="total"></th>
+                    <th class="text-align-right" id="responsive-total"></th>
                 </tr>
             </tbody>
         </table>

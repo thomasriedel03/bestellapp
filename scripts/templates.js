@@ -1,7 +1,7 @@
 function generateMenuSectionHTML(section, sectionIndex) {
       return /*html*/ `
         <div class="section-header">
-            <h2 id="${sectionIndex}-menu-section" class="margin-0">${section.section}</h2>
+            <h2  id="${sectionIndex}-menu-section"  class="section-header-headline">${section.section}</h2>
             <p class="margin-top-8">${section.description}</p>
         </div>
         <div id="${sectionIndex}-dish-area">
@@ -82,7 +82,7 @@ function generateBasketCostAreaHTML() {
                 </tr>
                 <tr>
                     <th class="text-align-left">Gesamtsumme</th>
-                    <th class="text-align-right" id="responsive-total"></th>
+                    <th class="text-align-right" id="total"></th>
                 </tr>
             </tbody>
         </table>

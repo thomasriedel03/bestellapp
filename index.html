@@ -21,11 +21,15 @@
             <link rel="stylesheet" href="./styles/quickselectionSection.css" />
             <link rel="stylesheet" href="./styles/responsive.css" />
             <link rel="stylesheet" href="style.css" />
+
+            <link rel="shortcut icon" href="./Material/Favicon/favicon.ico" type="image/x-icon" />
       </head>
-      <body onload="render()">
-            <header></header>
-            <div class="display-none" id="add-dish-dialog-container">
-                  <div id="add-dish-dialog"></div>
+      <body onload="render()" onresize="checkForResponsiveBasket()">
+            <header>
+                  <img id="header-img" src="./Material/Logo/Logo.png" />
+            </header>
+            <div onclick="closeAddDishDialog()" class="display-none" id="add-dish-dialog-container">
+                  <div onclick="doNotClose(event)" id="add-dish-dialog"></div>
             </div>
             <div id="content">
                   <div id="img-quickselection-menu-container">
@@ -34,6 +38,8 @@
                         </section>
                         <section id="info-section">
                               <h1>La Cucina di Thomas</h1>
+                              <img src="./assets/img/star.png" id="star-img" />
+                              <img src="./Material/Favicon/android-chrome-512x512.png" id="logo-img" />
                         </section>
                         <section id="quickselection-section"></section>
                         <section id="menu-section"></section>
@@ -74,7 +80,9 @@
                   <div id="responsive-basket-item-area"></div>
                   <div id="responsive-basket-cost-area"></div>
             </div>
-            <button onclick="openResponsiveBasket()" id="open-responsive-basket-button" class="display-none">WARENKORB</button>
+            <button onclick="openResponsiveBasket()" id="open-responsive-basket-button" class="display-none">
+                  [<span id="responsive-basket-amount"></span>] WARENKORB &nbsp;<span id="responsive-basket-button-total"></span>
+            </button>
             <footer></footer>
       </body>
 </html>

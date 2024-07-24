@@ -27,9 +27,22 @@ body {
 }
 
 #info-section {
-      background-color: aqua;
       height: 150px;
-      margin: 0;
+      margin: 0 15%;
+      padding: 16px;
+}
+
+#logo-img {
+      height: 64px;
+      width: 64px;
+      position: relative;
+      top: -128px;
+}
+
+#star-img {
+      filter: invert(50%) sepia(45%) saturate(5838%) hue-rotate(5deg) brightness(102%) contrast(96%);
+      height: 32px;
+      width: 32px;
 }
 
 #menu-section {
@@ -82,4 +95,8 @@ body {
 
 .section-header {
       height: 110px;
+}
+
+.section-header-headline {
+      scroll-margin-top: 90px;
 }

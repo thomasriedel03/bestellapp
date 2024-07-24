@@ -2,4 +2,11 @@ header {
       height: 80px;
       -webkit-box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.51);
       box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.51);
+      display: flex;
+      align-items: center;
+}
+
+#header-img {
+      filter: invert(49%) sepia(47%) saturate(2155%) hue-rotate(1deg) brightness(104%) contrast(105%);
+      height: 70px;
 }

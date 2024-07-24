@@ -12,9 +12,14 @@ function renderQuickselectionSection() {
       for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
             const section = menu[sectionIndex];
             quickselctionSection.innerHTML += /*html*/ `
-            <a href="#${sectionIndex}-menu-section">${section.section}</a>
+            <div class="quickselection-link" onclick="scrollToElement('${sectionIndex}-menu-section')">${section.section}</div>
         `;
       }
+}
+
+function scrollToElement(element) {
+      let ele = document.getElementById(element);
+      ele.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
 }
 
 function renderMenu() {
@@ -71,12 +76,13 @@ function renderResponsiveBasket() {
                     <td class="text-align-right" id="responsive-shipping-cost"></td>`;
             }
       }
-
+      basketItemCounter = 0;
       for (let basketIndex = 0; basketIndex < basket.length; basketIndex++) {
-            if (basket[basketIndex].amount >= 1) {
-                  document.getElementById(`responsive-basket-item-area`).innerHTML += generateBasketItemHTML(basketIndex);
-                  calcSums(basketIndex);
-            }
+            document.getElementById(`responsive-basket-item-area`).innerHTML += generateBasketItemHTML(basketIndex);
+            calcSums(basketIndex);
+            basketItemCounter = basketItemCounter + basket[basketIndex].amount;
+            document.getElementById('responsive-basket-amount').innerHTML = basketItemCounter;
+
             if ('ingredients' in basket[basketIndex]) {
             } else {
                   let basketItemName = document.getElementById(`${basketIndex}-basket-item-name`);
@@ -87,6 +93,12 @@ function renderResponsiveBasket() {
 
 function openResponsiveBasket() {
       document.getElementById('responsive-basket').classList.remove('display-none');
+}
+
+function checkForResponsiveBasket() {
+      if (window.innerWidth > 767) {
+            closeResponsiveBasket();
+      }
 }
 
 function closeResponsiveBasket() {
@@ -212,6 +224,7 @@ function calcTotal() {
 
       total.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
       responsiveTotal.innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
+      document.getElementById('responsive-basket-button-total').innerHTML = totalValue.toFixed(2).replace('.', ',') + '€';
 }
 
 function subtractOneFromAmount(basketIndex) {

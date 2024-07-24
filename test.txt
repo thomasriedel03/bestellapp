@@ -1,0 +1,32 @@
+menu.forEach((section) => {
+    let dishes = section['dishes'];
+      let menu = dishes.find((dish) => dish.name == 'Margherita Pizza');
+    console.log(section['dishes'].find((dish)));
+});
+
+function renderQuickselectionSection() {
+      let quickselctionSection = document.getElementById('quickselection-section');
+      quickselctionSection.innerHTML = '';
+      for (let sectionIndex = 0; sectionIndex < menu.length; sectionIndex++) {
+            const section = menu[sectionIndex];
+            quickselctionSection.innerHTML += /*html*/ `
+            <div onclick="scrollToElement('${sectionIndex}-menu-section')">${section.section}</div>
+        `;
+      }
+}
+
+function scrollToElement(element) {
+      let ele = document.getElementById(element);
+      ele.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+} 
+function generateMenuSectionHTML(section, sectionIndex) {
+      return /*html*/ `
+        <div class="section-header">
+            <span id="${sectionIndex}-menu-section" class="scroll-to-span"></span>
+            <h2 class="margin-0" style="scroll-margin-top: 100px;">${section.section}</h2>
+            <p class="margin-top-8">${section.description}</p>
+        </div>
+        <div id="${sectionIndex}-dish-area" class="margin-top-64">
+        </div>
+    `;
+}
