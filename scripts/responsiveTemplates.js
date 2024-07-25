@@ -14,5 +14,6 @@ function generateResponsiveBasketCostAreaHTML() {
                 </tr>
             </tbody>
         </table>
+        <button onclick="order()" class="order-button">Bestellen</button>
         `;
 }

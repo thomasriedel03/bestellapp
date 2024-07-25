@@ -259,3 +259,14 @@ function shippingNo() {
       setMenuAndBasketArrays();
       render();
 }
+
+function order() {
+      document.getElementById(`add-dish-dialog-container`).classList.remove('display-none');
+      document.getElementById(`add-dish-dialog`).innerHTML = '';
+      document.getElementById(`add-dish-dialog`).innerHTML += /*html*/ `
+            <div class="order-dialog-container">
+                  <h2>Du hast eine Testbestellung aufgegeben!</h2>
+                  <button class="ok-button" onclick="location.reload()">OK</button>
+            </div>
+      `;
+}

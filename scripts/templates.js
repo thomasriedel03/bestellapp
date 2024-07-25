@@ -29,7 +29,7 @@ function generateDishDialogHTML(sectionIndex, dishIndex) {
       dishPrice = dishPrice.toFixed(2).replace('.', ',');
       return /*html*/ `
         <button class="close-dialog-button" onclick="closeAddDishDialog()">X</button>
-        <h1>${menu[sectionIndex].dishes[dishIndex].name}</h1>
+        <h1 class="dish-dialog-dish-name">${menu[sectionIndex].dishes[dishIndex].name}</h1>
         <h3>${menu[sectionIndex].dishes[dishIndex].ingredients}</h3>
         <h2 id="${sectionIndex}.${dishIndex}-dish-price">${dishPrice}€</h2>
         <div class="variation-selector-container">
@@ -86,5 +86,6 @@ function generateBasketCostAreaHTML() {
                 </tr>
             </tbody>
         </table>
+        <button onclick="order()" class="order-button">Bestellen</button>
         `;
 }

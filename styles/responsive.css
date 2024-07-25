@@ -12,6 +12,13 @@
       }
 }
 
+@media (max-width: 500px) {
+      .variation-selector {
+            font-size: 12px !important;
+            padding: 0 !important;
+      }
+}
+
 @media (max-width: 450px) {
       #open-responsive-basket-button {
             font-size: 20px;
@@ -24,5 +31,15 @@
 
       .section-description {
             font-size: 12px;
+      }
+
+      .dish-dialog-dish-name {
+            font-size: 24px;
+      }
+}
+
+@media (max-width: 366px) {
+      .variation-selector {
+            font-size: 10px !important;
       }
 }
