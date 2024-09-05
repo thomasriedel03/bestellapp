@@ -5,32 +5,32 @@ let menu = [
             'dishes': [
                   {
                         'name': 'Margherita Pizza',
-                        'price': '8.50',
+                        'price': 8.5,
                         'ingredients': 'Tomatensauce, Mozzarella, Basilikum',
                         'variations': [
                               {
                                     'position': 0,
                                     'name': 'Margherita Pizza',
                                     'variation': 'Klein, Ø26cm',
-                                    'price': '8.50',
+                                    'price': 8.5,
                               },
                               {
                                     'position': 1,
                                     'name': 'Margherita Pizza',
                                     'variation': 'Mittel, Ø30cm',
-                                    'price': '11.00',
+                                    'price': 11.0,
                               },
                               {
                                     'position': 2,
                                     'name': 'Margherita Pizza',
                                     'variation': 'Familie, 46x33cm',
-                                    'price': '24.00',
+                                    'price': 24.0,
                               },
                               {
                                     'position': 3,
                                     'name': 'Margherita Pizza',
                                     'variation': 'Party, 60x40cm',
-                                    'price': '30.00',
+                                    'price': 30.0,
                               },
                         ],
                   },

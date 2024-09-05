@@ -27,3 +27,7 @@
       white-space: nowrap;
       cursor: pointer;
 }
+
+.quickselection-link:active {
+      transform: scale(0.95);
+}

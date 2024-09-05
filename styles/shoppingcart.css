@@ -67,7 +67,8 @@
       overflow-y: auto;
 }
 
-#repsonsive-shipping-cost-toggle-switch-container {
+#responsive-shipping-cost-toggle-switch-container {
+      margin-right: 32px;
       justify-content: center;
       background-color: lightgray;
       border-radius: 32px;
@@ -75,13 +76,13 @@
 }
 
 #responsive-shipping-yes-container {
-      width: 152px;
+      width: 50%;
       border-radius: 32px;
       cursor: pointer;
 }
 
 #responsive-shipping-no-container {
-      width: 152px;
+      width: 50%;
       border-radius: 32px;
       cursor: pointer;
 }
